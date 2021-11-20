@@ -26,7 +26,7 @@ URLS = [URL_l2, URL_l3, URL_l4, URL_l6, URL_l9, URL_g1, URL_g2]
 def greenhouse(driver):
     print("found the attach")
     # os.curdir()
-    time.sleep(8)
+    time.sleep(4)
     # send_keys(os.path.join(__location__, 'Michael_Caneff_Resume_V3.pdf'))
 
     # Get the secret location for cover letter
@@ -34,7 +34,7 @@ def greenhouse(driver):
         "s3_upload_for_cover_letter").find_element_by_xpath('//*[@type="file"]')
     cover_letter.send_keys(
         "/Users/andrew/Desktop/Work-Code/Job-Process-Automation/TestingCoding/cover.pdf")
-    time.sleep(2)
+    time.sleep(5)
 
     # Get the secret location for resume
     resume = driver.find_element_by_id(

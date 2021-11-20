@@ -20,7 +20,7 @@ URL_g2 = 'https://jobs.lever.co/bolt/04d798cf-65eb-49b6-b526-329e00c98b9c'
 
 # there's probably a prettier way to do all of this
 # test URLs so we don't have to call get_links
-URLS = [URL_g2, URL_g1 ,URL_l4, URL_l9,URL_l8,URL_l2 ]
+URLS = [URL_g2, URL_g1, URL_l4, URL_l9, URL_l8, URL_l2]
 #URLS= get_links
 # Fill in this dictionary with your personal details!
 JOB_APP = {
@@ -42,6 +42,8 @@ JOB_APP = {
 }
 
 # Greenhouse has a different application form structure than Lever, and thus must be parsed differently
+
+
 def greenhouse(driver):
 
     # basic info
@@ -75,6 +77,7 @@ def greenhouse(driver):
     #        resume_zone.send_keys(line.decode('utf-8'))
 
     # add linkedin
+
     try:
         driver.find_element_by_xpath(
             '//input[@name="job_application[answers_attributes][0][text_value]"]').send_keys(JOB_APP['linkedin'])
@@ -230,7 +233,7 @@ if __name__ == '__main__':
     Failures = 0
     # call get_links to automatically scrape job listings from glassdoor
     # This is where the get_links gets called such that all of them are saved
-    aggregatedURLs =  URLS #get_links.getURLs #getURLs()
+    aggregatedURLs = URLS  # get_links.getURLs #getURLs()
     print(f'Job Listings: {aggregatedURLs}')
     print('\n')
 
