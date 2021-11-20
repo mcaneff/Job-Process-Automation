@@ -18,6 +18,9 @@ URL_l9 = 'https://jobs.lever.co/bolt/e73884bc-f2c1-4069-b496-2b9564390520'
 URL_g1 = 'https://jobs.lever.co/bolt/b286df9b-0df5-45af-8080-7b59e22d7171'
 URL_g2 = 'https://jobs.lever.co/bolt/04d798cf-65eb-49b6-b526-329e00c98b9c'
 
+__location__ = os.path.realpath(os.path.join(
+    os.getcwd(), os.path.dirname(__file__)))
+
 # there's probably a prettier way to do all of this
 # test URLs so we don't have to call get_links
 URLS = [URL_g2, URL_g1, URL_l4, URL_l9, URL_l8, URL_l2]
@@ -67,15 +70,18 @@ def greenhouse(driver):
     except NoSuchElementException:
         pass
 
-    # Upload Resume as a Text File
-    # driver.find_elements_by_xpath('//*[@id="main_fields"]/div[8]/div/div[3]/a[1]').click()
+    # Upload Resume
+    # Get the secret location for cover letter
+    cover_letter = driver.find_element_by_id("s3_upload_for_cover_letter").find_element_by_xpath('//*[@type="file"]')
+    cover_letter.send_keys(os.path.join(__location__, 'cover.pdf'))
+    time.sleep(2)
 
-    # driver.find_element_by_css_selector("[data-source='paste']").click()
-    # with open(JOB_APP['resume_textfile']) as f:
-    #    lines = f.readlines()  # add each line of resume to the text area
-    #    for line in lines:
-    #        resume_zone.send_keys(line.decode('utf-8'))
-
+    # Get the secret location for resume
+    resume = driver.find_element_by_id(
+        "s3_upload_for_resume").find_element_by_xpath('//*[@type="file"]')
+    resume.send_keys(
+        os.path.join(__location__, 'resume.pdf'))
+    
     # add linkedin
 
     try:
