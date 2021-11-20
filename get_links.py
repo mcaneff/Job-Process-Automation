@@ -7,6 +7,7 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
+import boardScraper
 
 # to find links
 from bs4 import BeautifulSoup
@@ -193,3 +194,4 @@ def getURLs():
 
 # for testing purpose
 getURLs()
+boardScraper.scr()
