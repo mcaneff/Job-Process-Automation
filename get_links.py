@@ -22,8 +22,6 @@ PREFERENCES = {
     "location": " San Fransisco, California"
 }
 # helper method to give user time to log into glassdoor
-
-
 def login(driver):
     driver.get('https://www.glassdoor.com/index.htm')
 
@@ -35,20 +33,18 @@ def login(driver):
             break
     return True  # return once this is complete
 
-
-
 # navigate to appropriate job listing page
 def go_to_listings(driver):
-
+    
     # wait for the search bar to appear
     element = WebDriverWait(driver, 2).until(
-        EC.presence_of_element_located((By.XPATH, "//*[@id='scBar']"))
+        EC.presence_of_element_located((By.ID, "//*[@id='scBar']"))
     )
 
     try:
         # look for search bar fields
-        position_field = driver.find_element_by_xpath("//*[@id='sc.keyword']")
-        location_field = driver.find_element_by_xpath("//*[@id='sc.location']")
+        position_field = driver.find_element_by_xpath("//*[@id='scKeyword']")
+        location_field = driver.find_element_by_xpath("//*[@id='scLocation']")
         location_field.clear()
 
         # fill in with pre-defined data
@@ -73,11 +69,7 @@ def go_to_listings(driver):
     except NoSuchElementException:
         return False
 
-
-
 # aggregate all url links in a set
-
-
 def aggregate_links(driver):
 
     allLinks = []  # all hrefs that exist on the page
@@ -137,8 +129,6 @@ def aggregate_links(driver):
     return set(allFixedLinks)
 
 # 'main' method to iterate through all pages and aggregate URLs
-
-
 def getURLs():
     driver = webdriver.Chrome(ChromeDriverManager().install())
     #driver = webdriver.Chrome(executable_path='/Users/MCane/chromedriver/chromedriver.exe')
