@@ -6,7 +6,7 @@ PREFERENCES = {
     "position_title": "Software Engineering Intern",
     "location": "San Francisco"
     } 
-
+internFlag = 0
 def greenGet(job_boards):
     homeL = "https://boards.greenhouse.io/"
     all_positions = []
@@ -185,8 +185,13 @@ def export_to_csv(positions, filename):
     for pos in positions:
         
         if re.search(PREFERENCES["location"], pos["Location"], re.IGNORECASE):
+            if internFlag==1:
+                if re.search("software", pos["Title"], re.IGNORECASE):
+                    filt.append(pos)
+            else:
+                filt.append(pos)
 
-            filt.append(pos)
+
     writer.writerows(filt)
     f.close()
 
@@ -234,10 +239,11 @@ def scr():
     tempV=PREFERENCES["position_title"].split(" ")
      
     if len(tempV)>2:
+            internFlag=1
             getBoard(
                 all_companies,
                 
-                 ["software","intern"]
+                 ["intern"]
             )
     else :
             getBoard(

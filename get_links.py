@@ -193,5 +193,5 @@ def getURLs():
 
 
 # for testing purpose
-getURLs()
+#getURLs()
 boardScraper.scr()

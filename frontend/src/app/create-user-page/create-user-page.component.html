@@ -1,0 +1,187 @@
+
+<div class="container" >
+  <h2>Please Enter Your Data</h2>
+    <form [formGroup]="form" (ngSubmit)="onButtonClicked(form)">
+      <div>
+
+        <div class="row">
+          <div class="col-25">
+          <label for="fname">
+          First Name:
+        </label>
+          </div>
+          <div class="col-75">
+
+        <input id="fname" name="fname" maxlength="20" type="text" formControlName="fname"/>
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+        <label for="lname">
+          Last Name:
+        </label>
+        </div>
+        <div class="col-75">
+        <input id="lname" name="lname" maxlength="20" type="text" formControlName="lname"/>
+        </div>
+          </div>
+        
+          <div class="row">
+            <div class="col-25">
+        <label for="phone">
+          Phone:
+        </label>
+            </div>
+            <div class="col-75">
+        <input id="phone" name="phone" maxlength="10" type="text" formControlName="phone"/>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-25">
+          <label for="email">
+           Email:
+          </label>
+            </div>
+            <div class="col-75">
+          <input id="email" name="email" maxlength="40" type="text" formControlName="email"/>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-25">
+
+           <label for="position">
+            Position:
+           </label>
+            </div>
+            <div class="col-75">
+           <input id="position" name="position" maxlength="14" type="text" formControlName="position"/>
+          </div>
+        </div>
+
+
+          <div class="row">
+            <div class="col-25">
+           <label for="linkedin">
+            LinkedIn:
+           </label>
+            </div>
+            <div class="col-75">
+           <input id="linkedin" name="linkedin" maxlength="14" type="text" formControlName="linkedin"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+           <label for="website">
+            Website:
+           </label>
+          </div>
+     
+           <div class="col-75">
+           <input id="website" name="website" maxlength="14" type="text" formControlName="website"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+           <label for="github">
+            GitHub:
+           </label>
+          </div>
+          <div class="col-75">
+           <input id="github" name="github" maxlength="14" type="text" formControlName="github"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+           <label for="twitter">
+            Twitter:
+           </label>
+          </div>
+          <div class="col-75">
+           <input id="twitter" name="twitter" maxlength="14" type="text" formControlName="twitter"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+           <label for="location">
+            Location:
+           </label>
+          </div>
+          <div class="col-75">
+           <input id="location" name="location" maxlength="14" type="text" formControlName="location"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+           <label for="gDate">
+            Graduation Date:
+           </label>
+          </div>
+          <div class="col-75">
+           <input id="gDate" name="gDate" maxlength="14" type="text" formControlName="gDate"/>
+          </div>
+        </div>
+           
+        <div class="row">
+          <div class="col-25">
+           <label for="gYear">
+            Graduation Year:
+           </label>
+          </div>
+          <div class="col-75">
+           <input id="gYear" name="gYear" maxlength="14" type="text" formControlName="gYear"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+           <label for="university">
+            University:
+           </label>
+          </div>
+          <div class="col-75">
+           <input id="university" name="university" maxlength="14" type="text" formControlName="university"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+        <label for="resume">
+          Resume:
+         </label>
+          </div>
+         <div class="col-75">
+        <input type="file" id="resume" name="resume" (change)="onFileSel($event)">
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="col-25">
+        <label for="resume2">
+          Cover Letter (Optional):
+         </label>
+          </div>
+          
+         <div class="col-75">
+        <input type="file" id="resume2" name="resume2" (change)="onFileSel2($event)">
+      </div>
+    </div>
+        <br>
+    
+          <div >
+            <button type="submit"  [disabled]="!form.valid">Submit</button>
+
+          </div>
+      
+       
+        </div>
+    
+      </form>
+
+    </div>
