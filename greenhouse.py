@@ -36,7 +36,7 @@ class Greenhouse:
             loc.send_keys(common.keys.Keys.DOWN)
             loc.send_keys(common.keys.Keys.RETURN)
 
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add linkedin
@@ -44,94 +44,94 @@ class Greenhouse:
         try:
             self.driver.find_element_by_xpath(
                 '//input[@name="job_application[answers_attributes][0][text_value]"]').send_keys(data['linkedin'])
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'LinkedIn')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add graduation year
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[text()='2021']").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add university
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'Harvard')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add degree
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'Bachelor')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add major
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'Computer Engineering')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add how did you hear about this job?
         try:
             self.driver.find_element_by_xpath(
                 "//label[contains(.,'How did you hear about this job?')]").send_keys("Glass Door")
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add website
         try:
             self.driver.find_element_by_xpath(
                 "//label[contains(.,'Website')]").send_keys(data['website'])
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add work authorization
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'any employer')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add Gender
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'Male')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add Race
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'White')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add disability
         try:
             self.driver.find_element_by_xpath(
                 '//*[@id="job_application_disability_status"]/option[3]').click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'I don't have a disability')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
 
         # add Veteran Status
         try:
             self.driver.find_element_by_xpath(
                 "//select/option[contains(.,'I am not a protected veteran')]").click()
-        except common.exceptions.NoSuchElementException:
+        except (common.exceptions.NoSuchElementException, common.exceptions.ElementNotInteractableException):
             pass
         cover_letter = self.driver.find_element_by_id(
             "s3_upload_for_cover_letter").find_element_by_xpath('//*[@type="file"]')
