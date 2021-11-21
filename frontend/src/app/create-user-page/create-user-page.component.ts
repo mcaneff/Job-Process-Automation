@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TimetableService } from "../timetable.service";
 import { FormGroup, FormControl, Validators, NgForm } from "@angular/forms";
-import {AngularFireAuth} from '@angular/fire/auth'
+import { AngularFireAuth } from '@angular/fire/auth'
 import { NgForOf } from '@angular/common';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-create-user-page',
   templateUrl: './create-user-page.component.html',
@@ -16,7 +17,7 @@ export class CreateUserPageComponent implements OnInit {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private timetableService:TimetableService,
+    private timetableService: TimetableService,
   ) { }
 
   ngOnInit(): void {
@@ -73,55 +74,70 @@ export class CreateUserPageComponent implements OnInit {
         "",
         Validators.compose([Validators.required])
       )
-  }) //A form for sign up. Validation of fields like email and password is done using firebase
+    }) //A form for sign up. Validation of fields like email and password is done using firebase
   }
-  onFileSel(event){
-    this.selFile=event.target.files[0]
+  onFileSel(event) {
+    this.selFile = event.target.files[0]
   }
-  onFileSel2(event){
-    this.selFile2=event.target.files[0]
+  onFileSel2(event) {
+    this.selFile2 = event.target.files[0]
   }
-  async onButtonClicked(form: FormGroup){
-    
-    const item={
-      fname: form.value.fname,
-      lname: form.value.fname,
-      email: form.value.email,
-      phone: form.value.phone,
-      position: form.value.position,
-      linkedin: form.value.linkedin,
-      website: form.value.website,
-      github: form.value.github,
-      twitter: form.value.twitter,
-      location: form.value.location,
-      gDate: form.value.gDate,
-      gYear: form.value.gYear,
-      university: form.value.university
-    }
-    const fd=new FormData()
-    fd.append('file', this.selFile, 'resume.pdf')
+  async onButtonClicked(form: FormGroup) {
+    console.log(form)
+    const fd = new FormData()
 
 
-    const fd2=new FormData()
-    fd2.append('file', this.selFile2, 'cover.pdf')
+    const first_name = form.value.fname
+    const last_name = form.value.fname
+    const email = form.value.email
+    const phone = form.value.phone
+    const position = form.value.position
+    const linkedin = form.value.linkedin
+    const website = form.value.website
+    const github = form.value.github
+    const twitter = form.value.twitter
+    const location = form.value.location
+    const graduation_date = form.value.gDate
+    const graduation_year = form.value.gYear
+    const university = form.value.university
+
+    fd.append('first_name', first_name)
+    fd.append('last_name', last_name)
+    fd.append('email', email)
+    fd.append('phone', phone)
+    fd.append('position', position)
+    fd.append('linkedin', linkedin)
+    fd.append('website', website)
+    fd.append('github', github)
+    fd.append('twitter', twitter)
+    fd.append('location', location)
+    fd.append('graduation_date', graduation_date)
+    fd.append('graduation_year', graduation_year)
+    fd.append('university', university)
 
 
-    this.timetableService.postF(fd).subscribe((res)=>{
-        
+    fd.append('resume', this.selFile, 'resume.pdf')
+
+
+    // const fd2 = new FormData()
+    fd.append('cover_letter', this.selFile2, 'cover.pdf')
+
+    this.timetableService.postF(fd).subscribe((res) => {
+
     })
 
-      this.timetableService.createV(item).subscribe((res)=>{
-        
-      })
-      
+    this.timetableService.createV(fd).subscribe((res) => {
 
-    
-    }
+    })
 
 
-  
-  
-  
+
+  }
+
+
+
+
+
 
 
 }
